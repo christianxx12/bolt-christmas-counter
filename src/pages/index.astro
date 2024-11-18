@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ChristmasCard from '../components/ChristmasCard.astro';
+import CountdownTimer from '../components/CountdownTimer.astro';
+---
+
+<Layout title="Christmas Countdown 2024">
+	<main>
+		<h1>Time Until Christmas</h1>
+		<p class="subtitle">Counting down to the most magical day of the year!</p>
+		
+		<CountdownTimer />
+
+		<div class="card-grid">
+			<ChristmasCard
+				icon="🎄"
+				title="Christmas Spirit"
+				description="Feel the joy and magic in the air as we count down to Christmas Day!"
+			/>
+			<ChristmasCard
+				icon="🎁"
+				title="Gift Planning"
+				description="Start preparing your gift list for your loved ones."
+			/>
+			<ChristmasCard
+				icon="⭐"
+				title="Holiday Traditions"
+				description="Create lasting memories with special family traditions."
+			/>
+		</div>
+
+		<div class="cta-section">
+			<h2>Stay Updated</h2>
+			<p>Get notified about special holiday events and celebrations!</p>
+			<form class="subscribe-form">
+				<input type="email" placeholder="Enter your email" />
+				<button type="submit">Subscribe</button>
+			</form>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 2rem;
+		max-width: 1200px;
+		color: var(--snow-white);
+		text-align: center;
+	}
+
+	h1 {
+		font-size: 4.5rem;
+		font-weight: 700;
+		margin: 0;
+		background: linear-gradient(to right, var(--christmas-gold), #fff);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+	}
+
+	.subtitle {
+		font-size: 1.5rem;
+		color: var(--snow-white);
+		margin: 1rem 0 3rem;
+	}
+
+	.card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin: 4rem 0;
+	}
+
+	.cta-section {
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(10px);
+		border-radius: 20px;
+		padding: 3rem;
+		margin: 4rem 0;
+		border: 2px solid var(--christmas-gold);
+	}
+
+	.cta-section h2 {
+		color: var(--christmas-gold);
+		font-size: 2.5rem;
+		margin: 0 0 1rem;
+	}
+
+	.subscribe-form {
+		display: flex;
+		gap: 1rem;
+		max-width: 500px;
+		margin: 2rem auto 0;
+	}
+
+	input[type="email"] {
+		flex: 1;
+		padding: 0.8rem 1.5rem;
+		border: none;
+		border-radius: 25px;
+		background: rgba(255, 255, 255, 0.9);
+		font-size: 1rem;
+	}
+
+	button {
+		padding: 0.8rem 2rem;
+		border: none;
+		border-radius: 25px;
+		background: var(--christmas-red);
+		color: white;
+		font-size: 1rem;
+		cursor: pointer;
+		transition: transform 0.3s ease;
+	}
+
+	button:hover {
+		transform: scale(1.05);
+	}
+
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 3rem;
+		}
+
+		.subscribe-form {
+			flex-direction: column;
+		}
+
+		button {
+			width: 100%;
+		}
+	}
+</style>

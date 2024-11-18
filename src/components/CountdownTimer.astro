@@ -1,0 +1,97 @@
+---
+---
+
+<div class="countdown" id="countdown">
+  <div class="countdown-item">
+    <span class="number" id="days">00</span>
+    <span class="label">Days</span>
+  </div>
+  <div class="countdown-item">
+    <span class="number" id="hours">00</span>
+    <span class="label">Hours</span>
+  </div>
+  <div class="countdown-item">
+    <span class="number" id="minutes">00</span>
+    <span class="label">Minutes</span>
+  </div>
+  <div class="countdown-item">
+    <span class="number" id="seconds">00</span>
+    <span class="label">Seconds</span>
+  </div>
+</div>
+
+<script>
+function updateCountdown() {
+  const christmas = new Date(new Date().getFullYear(), 11, 25); // Month is 0-based
+  if (new Date() > christmas) {
+    christmas.setFullYear(christmas.getFullYear() + 1);
+  }
+
+  const now = new Date();
+  const diff = christmas.getTime() - now.getTime();
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('days').textContent = days.toString().padStart(2, '0');
+  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+</script>
+
+<style>
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.countdown-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 10px;
+  min-width: 100px;
+  border: 2px solid var(--christmas-gold);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.countdown .number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--christmas-gold);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.countdown .label {
+  font-size: 1rem;
+  color: var(--snow-white);
+}
+
+@media (max-width: 768px) {
+  .countdown {
+    gap: 1rem;
+  }
+
+  .countdown-item {
+    min-width: 70px;
+    padding: 1rem;
+  }
+
+  .countdown .number {
+    font-size: 1.8rem;
+  }
+
+  .countdown .label {
+    font-size: 0.8rem;
+  }
+}
+</style>

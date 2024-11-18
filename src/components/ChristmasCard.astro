@@ -1,0 +1,48 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	icon: string;
+}
+
+const { title, description, icon } = Astro.props;
+---
+
+<div class="christmas-card">
+	<div class="icon">{icon}</div>
+	<h3>{title}</h3>
+	<p>{description}</p>
+</div>
+
+<style>
+	.christmas-card {
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(10px);
+		border-radius: 15px;
+		padding: 2rem;
+		text-align: center;
+		color: var(--snow-white);
+		border: 2px solid var(--christmas-gold);
+		transition: transform 0.3s ease;
+	}
+
+	.christmas-card:hover {
+		transform: translateY(-5px);
+	}
+
+	.icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	h3 {
+		color: var(--christmas-gold);
+		font-size: 1.5rem;
+		margin: 0.5rem 0;
+	}
+
+	p {
+		margin: 0;
+		line-height: 1.6;
+	}
+</style>
